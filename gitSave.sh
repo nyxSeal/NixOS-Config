@@ -1,0 +1,16 @@
+#! /bin/bash
+
+cd ~/NixOS-Config
+
+git pull #origin main
+
+sudo cp /etc/nixos/configuration.nix ~/NixOS-Config/configuration.nix
+
+git add -v ~/NixOS-Config/*
+
+echo -n "Commit message: "
+read -r commitMessage
+
+git commit -m "$commitMessage" 
+
+git push origin main
