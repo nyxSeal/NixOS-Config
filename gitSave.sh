@@ -11,4 +11,4 @@ read -r commitMessage
 
 git commit -m "$commitMessage" 
 
-git push origin internal
+git push --set-upstream origin main
