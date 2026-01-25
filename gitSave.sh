@@ -2,8 +2,6 @@
 
 cd ~/NixOS-Config
 
-git pull #origin main
-
 sudo cp /etc/nixos/configuration.nix ~/NixOS-Config/configuration.nix
 
 git add -v ~/NixOS-Config/*
@@ -13,4 +11,4 @@ read -r commitMessage
 
 git commit -m "$commitMessage" 
 
-git push origin main
+git push origin internal

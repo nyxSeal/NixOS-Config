@@ -68,7 +68,6 @@
     config = {
       user.name = "nyxSeal";
       user.email = "litigate_putdown.zigzagged008@slmails.com";
-      init.defaultBranch = "main";
       pull.rebase = false;
       #commit.gpgsign = true;
     };
@@ -80,7 +79,7 @@
       rewrite = "sudo nixos-rebuild switch"; 
       update = "sudo nix-channel --update";
       loadConfig = "sudo vim /etc/nixos/configuration.nix";
-      saveGit = "cd ~/NixOS-Config && bash gitSave.sh";
+      saveGit = "bash ./gitSave.sh";
     };
   };
 
