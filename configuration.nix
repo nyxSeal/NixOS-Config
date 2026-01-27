@@ -44,16 +44,15 @@
        timeout = 10;
      };
      
-     kernelParams = {
-       "zswap.enabled=1"; # enables zswap
-       "zswap.compressor=lz4"; # compression algorithm
-       "zswap.max_pool_percent=20"; # maximum percentage of RAM that zswap is allowed to use
-       "zswap.shrinker_enabled=1"; # whether to shrink the pool proactively on high memory pressure
-     };
+     kernelParams = [
+       "zswap.enabled = 1" # enables zswap
+       "zswap.compressor = lz4" # compression algorithm
+       "zswap.max_pool_percent = 20" # maximum percentage of RAM that zswap is allowed to use
+       "zswap.shrinker_enabled = 1" # whether to shrink the pool proactively on high memory pressure
+     ];
      
-     initrd.systemd.enable = true; # required if using lz4 algorithm for zswap
-     
-     boot.kernelPackages = pkgs.linuxPackages_hardened; # Use latest (hardened) kernel
+     initrd.systemd.enable = true; # required if using lz4 algorithm for zswap     
+     kernelPackages = pkgs.linuxPackages_hardened; # Use latest (hardened) kernel
   };
 
   services.swapspace.enable = true; # dynamically creates swap when needed on SSD
@@ -61,11 +60,18 @@
 
 
 
-  networking.hostName = "nixy"; # Define your hostname.
+  networking = {
+    hostName = "nixy"; # Define your hostname.
+    networkmanager.enable = true; # Enables network configurations interactively with nmcli or nmtui
+  };
 
-  networking.networkmanager.enable = true; # Enables network configurations interactively with nmcli or nmtui
+
+
 
   time.timeZone = "America/New_York"; # Timezone
+
+
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -100,12 +106,14 @@
 
   programs.git = {
     enable = true;
+
     config = {
       user.name = "nyxSeal";
       user.email = "litigate_putdown.zigzagged008@slmails.com";
       pull.rebase = false;
       #commit.gpgsign = true;
     };
+
   };
 
 
@@ -113,21 +121,21 @@
 
   programs.bash = {
     enable = true;
+
     shellAliases = { # Bash aliases
       rewrite = "sudo nixos-rebuild switch"; 
       update = "sudo nix-channel --update";
       loadConfig = "sudo vim /etc/nixos/configuration.nix";
       saveGit = "bash ~/NixOS-Config/gitSave.sh";
     };
+
   };
 
 
 
 
   services.openssh = { # Enables OpenSSH
-
     enable = true;
-
     ports = [ 5000 22 ];
 
     settings = {
@@ -137,9 +145,7 @@
 
   };
   programs.ssh = {
-
     startAgent = true;
-
     enableAskPassword = true;
 
     extraConfig = "
@@ -164,16 +170,14 @@
     SSH_ASKPASS_REQUIRE = "prefer";
   };
 
+
+
+
   security = {
-
     unprivilegedUsernsClone = true; # Allows apps to be launched with hardened kernel
-
     apparmor.enable = true;
-
     #allowUserNamespaces = true; # Needed for sandboxing?
-
     sudo.execWheelOnly = true;
-
     protectKernelImage = true;
   };  
 
@@ -181,11 +185,8 @@
 
 
   services = {
-
     displayManager.ly.enable = true;
-
     desktopManager.plasma6.enable = true;
-
     printing.enable = true; # Enables CUPS
 
     pipewire = {
@@ -199,32 +200,33 @@
 
 
   documentation.dev.enable = true; # Enables extra man pages
+
+
+
  
   nixpkgs.config.allowUnfree = true; # Allows unfree software to be installed
 
 
+
  
   programs.steam = { # Enables steam
-
     enable = true;
-
     remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
-
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-
   };
 
 
+
   
-  # Define a user account
-  users.users.nyxSeal = {
+  users.users.nyxSeal = { # define a user account
     isNormalUser = true;
     extraGroups = [ "wheel" ".git" ]; # Enable ‘sudo’ for the user.
+
     packages = with pkgs; [
       tree
     ];
+
   };
 
 
