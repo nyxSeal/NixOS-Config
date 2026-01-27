@@ -110,6 +110,7 @@
 
 
 
+
   programs.bash = {
     enable = true;
     shellAliases = { # Bash aliases
