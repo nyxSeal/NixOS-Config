@@ -10,6 +10,9 @@
       ./hardware-configuration.nix
     ];
 
+
+
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -28,18 +31,35 @@
     ytfzf
   ];
 
-
+  
 
 
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    timeout = 10;
+  boot = {
+     
+    loader = {
+       systemd-boot.enable = true;
+       efi.canTouchEfiVariables = true;
+       timeout = 10;
+     };
+     
+     kernelParams = {
+       "zswap.enabled=1" # enables zswap
+       "zswap.compressor=lz4" # compression algorithm
+       "zswap.max_pool_percent=20" # maximum percentage of RAM that zswap is allowed to use
+       "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
+     };
+     
+     initrd.systemd.enable = true; # required if using lz4 algorithm for zswap
+     
+     boot.kernelPackages = pkgs.linuxPackages_hardened; # Use latest (hardened) kernel
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_hardened; # Use latest (hardened) kernel
+  services.swapspace.enable = true; # dynamically creates swap when needed on SSD
+
+
+
 
   networking.hostName = "nixy"; # Define your hostname.
 
@@ -51,17 +71,32 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+
+
+
   system.autoUpgrade = { # Automatic updating
     enable = true;
     dates = "weekly";
   };
 
-  nix.gc = { # Automatic rollback version cleanup
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 10d";
+  nix = { 
+
+    gc = { # Automatic rollback version cleanup
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 10d";
+    };
+
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+      #max-jobs = 2;  # not needed if SwapSpace and zswap work
+    };
+
   };
-  nix.settings.auto-optimise-store = true;
+
+
+
 
   programs.git = {
     enable = true;
@@ -73,28 +108,39 @@
     };
   };
 
+
+
   programs.bash = {
     enable = true;
     shellAliases = { # Bash aliases
       rewrite = "sudo nixos-rebuild switch"; 
       update = "sudo nix-channel --update";
       loadConfig = "sudo vim /etc/nixos/configuration.nix";
-      saveGit = "bash ./gitSave.sh";
+      saveGit = "bash ~/NixOS-Config/gitSave.sh";
     };
   };
 
+
+
+
   services.openssh = { # Enables OpenSSH
+
     enable = true;
+
     ports = [ 5000 22 ];
+
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
     };
-  };
 
+  };
   programs.ssh = {
+
     startAgent = true;
+
     enableAskPassword = true;
+
     extraConfig = "
       Host backupServer
         Hostname 192.168.1.172
@@ -107,40 +153,69 @@
         IdentityFile ~/.ssh/id_ed25519_2
         IdentitiesOnly yes
     ";
+
   };
+
+
+
 
   environment.variables = {
     SSH_ASKPASS_REQUIRE = "prefer";
   };
 
   security = {
+
     unprivilegedUsernsClone = true; # Allows apps to be launched with hardened kernel
+
     apparmor.enable = true;
+
     #allowUserNamespaces = true; # Needed for sandboxing?
+
     sudo.execWheelOnly = true;
+
     protectKernelImage = true;
   };  
 
+
+
+
   services = {
+
     displayManager.ly.enable = true;
+
     desktopManager.plasma6.enable = true;
+
     printing.enable = true; # Enables CUPS
+
     pipewire = {
       enable = true;
       pulse.enable = true;
     };
+
   };
+
+
+
 
   documentation.dev.enable = true; # Enables extra man pages
  
   nixpkgs.config.allowUnfree = true; # Allows unfree software to be installed
+
+
  
   programs.steam = { # Enables steam
+
     enable = true;
+
     remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
+
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+
   };
+
+
   
   # Define a user account
   users.users.nyxSeal = {
