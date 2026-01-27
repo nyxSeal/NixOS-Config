@@ -19,16 +19,16 @@
     borgbackup
     btop
     fastfetch
+    floorp-bin
     kdePackages.ksshaskpass
-    librewolf
+    kdePackages.filelight
+    #librewolf
     prismlauncher
     tealdeer
     vesktop
     wget
     vim
     vorta
-    yt-dlp
-    ytfzf
   ];
 
   
@@ -96,7 +96,6 @@
     settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
-      #max-jobs = 2;  # not needed if SwapSpace and zswap work
     };
 
   };
