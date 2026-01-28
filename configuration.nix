@@ -100,7 +100,7 @@
       rewrite = "sudo nixos-rebuild switch"; 
       update = "sudo nix-channel --update";
       loadConfig = "sudo vim /etc/nixos/configuration.nix";
-      saveGit = "bash ~/NixOS-Config/gitSave.sh";
+      saveGit = "bash ~/.nixConfig/gitSave.sh";
     };
 
   };

@@ -1,8 +1,8 @@
 #! /bin/zsh
 
-mkdir -v ~/NixOS-Config
+mkdir -v ~/.nixConfig
 
-cd ~/NixOS-Config
+cd ~/.nixConfig
 git init 
 
 ssh-keygen -C "localMain" -a 32 -f ~/.ssh/id_ed25519_2

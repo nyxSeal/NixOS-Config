@@ -2,9 +2,9 @@
 
 cd ~/NixOS-Config
 
-sudo cp /etc/nixos/configuration.nix ~/NixOS-Config/configuration.nix
+sudo cp /etc/nixos/configuration.nix ~/.nixConfig/configuration.nix
 
-git add -v ~/NixOS-Config/*
+git add -v ~/.nixConfig/*
 
 echo -n "Commit message: "
 read -r commitMessage
