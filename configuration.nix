@@ -5,7 +5,7 @@
 
 {
 
-
+  # to create these ASCII titles: https://patorjk.com/software/taag/#p=display&f=Big+Money-ne
 
 
 
@@ -64,19 +64,19 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    borgbackup
-    btop
+    borgbackup # backup system
+    btop # tui system monitor
     fastfetch
     floorp-bin # replacement for librewolf
-    kdePackages.ksshaskpass
-    kdePackages.filelight
+    kdePackages.ksshaskpass # kde ssh agent 
+    kdePackages.filelight # file usage visualizer
     #librewolf  # currently is broken
-    prismlauncher
-    tealdeer
-    vesktop
-    wget
-    vim
-    vorta
+    prismlauncher # minecraft launcher
+    tealdeer # man pages but shorter
+    vesktop # discord client with plugins
+    wget # idk
+    vim # text editor
+    vorta # gui for borgbackup
   ];
 
 
@@ -150,6 +150,25 @@
 
 
   services.swapspace.enable = true; # dynamically creates swap when needed on SSD
+
+
+
+
+
+# /$$   /$$  /$$$$$$  /$$$$$$$  /$$$$$$$  /$$      /$$  /$$$$$$  /$$$$$$$  /$$$$$$$$
+#| $$  | $$ /$$__  $$| $$__  $$| $$__  $$| $$  /$ | $$ /$$__  $$| $$__  $$| $$_____/
+#| $$  | $$| $$  \ $$| $$  \ $$| $$  \ $$| $$ /$$$| $$| $$  \ $$| $$  \ $$| $$      
+#| $$$$$$$$| $$$$$$$$| $$$$$$$/| $$  | $$| $$/$$ $$ $$| $$$$$$$$| $$$$$$$/| $$$$$   
+#| $$__  $$| $$__  $$| $$__  $$| $$  | $$| $$$$_  $$$$| $$__  $$| $$__  $$| $$__/   
+#| $$  | $$| $$  | $$| $$  \ $$| $$  | $$| $$$/ \  $$$| $$  | $$| $$  \ $$| $$      
+#| $$  | $$| $$  | $$| $$  | $$| $$$$$$$/| $$/   \  $$| $$  | $$| $$  | $$| $$$$$$$$
+#|__/  |__/|__/  |__/|__/  |__/|_______/ |__/     \__/|__/  |__/|__/  |__/|________/
+
+
+
+  hardware = {
+    graphics.enable = true;
+  };
 
 
 
@@ -354,7 +373,7 @@
 
   users.users.nyxSeal = { # define a user account
     isNormalUser = true;
-    extraGroups = [ "wheel" ".git" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "git" "networkmanager"]; # Enable ‘sudo’ for the user.
 
     packages = with pkgs; [
       tree
