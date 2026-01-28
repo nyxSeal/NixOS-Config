@@ -85,9 +85,13 @@
 
 
 
+  system.userActivationScripts.zshrc = "touch .zshrc";
+
+
+
   programs.zsh = { # shell language
     enable = true;
-    #enableCompletion = true;
+    enableCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -102,6 +106,13 @@
       loadConfig = "sudo vim /etc/nixos/configuration.nix";
       saveGit = "bash ~/.nixConfig/gitSave.sh";
     };
+
+    histSize = 10000;
+    histFile = "$HOME/.zsh_history";
+
+    setOptions = [
+    
+   ];
 
   };
 
