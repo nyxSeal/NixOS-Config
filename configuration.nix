@@ -81,8 +81,20 @@
 
 
 
-  programs.bash = { # shell language
+  programs.bash.enable = false;
+
+
+
+  programs.zsh = { # shell language
     enable = true;
+    #enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" ];
+    };
 
     shellAliases = { # Bash aliases
       rewrite = "sudo nixos-rebuild switch"; 
