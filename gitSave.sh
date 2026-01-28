@@ -1,6 +1,6 @@
 #! /bin/zsh
 
-cd ~/NixOS-Config
+cd ~/.nixConfig
 
 sudo cp /etc/nixos/configuration.nix ~/.nixConfig/configuration.nix
 
