@@ -1,10 +1,8 @@
 #! /bin/zsh
 
-cd ~/.nixConfig
+cd ~/.nixconfig
 
-sudo cp /etc/nixos/configuration.nix ~/.nixConfig/configuration.nix
-
-git add -v ~/.nixConfig/*
+git add -v ~/.nixconfig/*
 
 echo -n "Commit message: "
 read -r commitMessage

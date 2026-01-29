@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs,  ... }:
 
 
 
@@ -102,14 +102,14 @@
     };
 
     shellAliases = { # Bash aliases
-      rewrite = "sudo nixos-rebuild switch"; 
-      update = "sudo nix-channel --update";
-      loadConfig = "sudo vim /etc/nixos/configuration.nix";
-      saveGit = "bash ~/.nixConfig/gitSave.sh";
+      rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
+      #update = "sudo nix-channel --update";
+      loadConfig = "vim ./configuration.nix";
+      saveGit = "bash ./gitSave.sh";
     };
 
     histSize = 10000;
-    histFile = "$HOME/.zsh_history";
+    histFile = "~/.zsh_history";
 
     setOptions = [
     
@@ -161,7 +161,9 @@
 
 
 
-  services.swapspace.enable = true; # dynamically creates swap when needed on SSD
+  services.swapspace = {
+    enable = true; # dynamically creates swap when needed on SSD
+    settings.swappath = "~/.swapspace"
 
 
 
@@ -385,7 +387,7 @@
 
   users.users.nyxSeal = { # define a user account
     isNormalUser = true;
-    extraGroups = [ "wheel" "git" "networkmanager"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "git" "networkmanager"];
 
     packages = with pkgs; [
       tree
