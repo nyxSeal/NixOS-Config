@@ -105,7 +105,7 @@
       rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
       #update = "sudo nix-channel --update";
       loadConfig = "vim ./configuration.nix";
-      saveGit = "bash ./gitSave.sh";
+      saveGit = "zsh ./gitSave.sh";
     };
 
     histSize = 10000;
