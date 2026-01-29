@@ -40,11 +40,11 @@
 
 
 
-  documentation.dev.enable = true; # Enables extra man pages
+  documentation.dev.enable = true; # enables extra man pages
 
 
  
-  nixpkgs.config.allowUnfree = true; # Allows unfree software to be installed
+  nixpkgs.config.allowUnfree = true; # allows unfree software to be installed
 
 
 
@@ -98,6 +98,7 @@
     ohMyZsh = {
       enable = true;
       plugins = [ "git" ];
+      theme = "agnoster"; 
     };
 
     shellAliases = { # Bash aliases
