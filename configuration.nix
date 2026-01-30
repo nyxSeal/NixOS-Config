@@ -102,7 +102,7 @@
     };
 
     shellAliases = { # Bash aliases
-      rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
+      rewrite = "nixos-rebuild switch --flake ~/.nixconfig"; 
       #update = "sudo nix-channel --update";
       loadConfig = "vim ./configuration.nix";
       saveGit = "zsh ./gitSave.sh";
@@ -111,9 +111,9 @@
     histSize = 10000;
     histFile = "~/.zsh_history";
 
-    setOptions = [
-    
-   ];
+    #setOptions = [
+    #
+    #];
 
   };
 
@@ -164,7 +164,7 @@
   services.swapspace = {
     enable = true; # dynamically creates swap when needed on SSD
     settings.swappath = "~/.swapspace";
-
+  };
 
 
 
