@@ -92,7 +92,7 @@
   programs.zsh = { # shell language
     enable = true;
     enableCompletion = true;
-    autosuggestions.enable = true;
+    #autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
     ohMyZsh = {
@@ -102,7 +102,7 @@
     };
 
     shellAliases = { # Bash aliases
-      rewrite = "nixos-rebuild switch --flake ~/.nixconfig"; 
+      rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
       #update = "sudo nix-channel --update";
       loadConfig = "vim ./configuration.nix";
       saveGit = "zsh ./gitSave.sh";
