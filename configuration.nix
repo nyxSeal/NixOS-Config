@@ -91,8 +91,8 @@
 
   programs.zsh = { # shell language
     enable = true;
-    enableCompletion = true;
-    #autosuggestions.enable = true;
+    #enableCompletion = true;
+    autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
     ohMyZsh = {
@@ -104,8 +104,8 @@
     shellAliases = { # Bash aliases
       rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
       #update = "sudo nix-channel --update";
-      loadConfig = "vim ./configuration.nix";
-      saveGit = "zsh ./gitSave.sh";
+      loadConfig = "vim ~/.nixconfig/configuration.nix";
+      saveGit = "zsh ~/.nixconfig/gitSave.sh";
     };
 
     histSize = 10000;
