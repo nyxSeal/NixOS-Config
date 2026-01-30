@@ -71,6 +71,7 @@
     kdePackages.ksshaskpass # kde ssh agent 
     kdePackages.filelight # file usage visualizer
     #librewolf  # currently is broken
+    omnissa-horizon-client # virtual desktop client
     prismlauncher # minecraft launcher
     tealdeer # man pages but shorter
     vesktop # discord client with plugins
