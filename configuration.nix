@@ -163,7 +163,7 @@
 
   services.swapspace = {
     enable = true; # dynamically creates swap when needed on SSD
-    settings.swappath = "$HOME/.swapspace";
+    settings.swappath = "/home/${global.mainUser}/.swapspace";
   };
 
 
