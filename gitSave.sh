@@ -3,6 +3,7 @@
 cd ~/.nixconfig
 
 git add -v ~/.nixconfig/*
+git add -v ~/.gitignore
 
 echo -n "Commit message: "
 read -r commitMessage
