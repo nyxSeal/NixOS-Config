@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, inputs,  ... }:
+{ config, lib, pkgs, inputs, global,  ... }:
 
 
 
@@ -200,7 +200,7 @@
 
 
   networking = {
-    hostName = "nixy";
+    hostName = "${global.hostName}";
     networkmanager.enable = true; # enables network configurations interactively with nmcli or nmtui
   };
 
@@ -332,8 +332,8 @@
     enable = true;
 
     config = {
-      user.name = "nyxSeal";
-      user.email = "litigate_putdown.zigzagged008@slmails.com";
+      user.name = "${global.gitUsername}";
+      user.email = "${global.gitEmail}";
       pull.rebase = false;
       #commit.gpgsign = true;
     };
@@ -385,7 +385,7 @@
 
 
 
-  users.users.nyxSeal = { # define a user account
+  users.users.${global.mainUser} = { # define a user account
     isNormalUser = true;
     extraGroups = [ "wheel" "git" "networkmanager"];
 
