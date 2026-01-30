@@ -5,11 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
   };
 
-  outputs = { self, nixpkgs, global } @inputs:
+  outputs = { self, nixpkgs } @inputs:
   let
   pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    nixosConfigurations.${global.hostName} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixy = nixpkgs.lib.nixosSystem { # replace nixy for hostName if different
 
       specialArgs = { 
         inherit inputs;
