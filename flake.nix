@@ -9,7 +9,7 @@
   let
   pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    nixosConfigurations.${global.hostName} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixy = nixpkgs.lib.nixosSystem {
 
       specialArgs = { 
         inherit inputs;
