@@ -120,6 +120,23 @@
 
 
 
+  system.activationScripts.createSteamSubvolume.text = ''
+    if [ ! -d /home/nyxSeal/steam ]; then
+      echo "Creating Btrfs subvolume for Steam..."
+      btrfs subvolume create /home/nyxSeal/steam
+    fi
+  '';
+
+
+
+  fileSystems."/home/nyxSeal/.local/share/Steam" = {
+    device = "/home/nyxSeal/steam";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
+
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = false; # Open ports in the firewall for Steam Remote Play
