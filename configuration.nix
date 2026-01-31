@@ -102,9 +102,9 @@
       theme = "agnoster"; 
     };
 
-    shellAliases = { # Bash aliases
+    shellAliases = { # aliases
       rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
-      #update = "sudo nix-channel --update";
+      update = "sudo nix flake update";
       loadConfig = "vim ~/.nixconfig/configuration.nix";
       saveGit = "zsh ~/.nixconfig/gitSave.sh";
     };
