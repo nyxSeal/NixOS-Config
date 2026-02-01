@@ -61,11 +61,14 @@
 
 
 
-  systemd.tmpfiles.rules = [
-  "L+ /home/${global.mainUser}/.local/share/Steam /home/${global.mainUser}/steam" # creates a symlink from normal steam directory to steam subvolume
-  "L+ /home/${global.mainUser}/.steam /home/${global.mainUser}/steam" # creates a symlink from normal steam directory to steam subvolume
-  #"f+ " # site said these were needed? not sure, just keeping them just in case
-  #"C+ " # site said these were needed? not sure, just keeping them just in case
+  systemd.tmpfiles.rules = let
+  homeDir = /home/${global.mainUser};
+  in [
+    "L+ /homeDir/.local/share/Steam /homeDir/steam" # creates a symlink from normal steam directory to steam subvolume
+    "L+ /homeDir/.steam /homeDir/steam" # creates a symlink from normal steam directory to steam subvolume
+    #"f+ " # site said these were needed? not sure, just keeping them just in case
+    "C+ /homeDir/steam /homeDir/.local/share/Steam" # site said these were needed? not sure, just keeping them just in case
+    "C+ /homeDir/steam /homeDir/.steam" # site said these were needed? not sure, just keeping them just in case
   ];
 
 
