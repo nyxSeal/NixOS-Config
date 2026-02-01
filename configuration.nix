@@ -50,6 +50,28 @@
 
 
 
+#  /$$$$$$  /$$     /$$ /$$      /$$ /$$       /$$$$$$ /$$   /$$ /$$   /$$  /$$$$$$ 
+# /$$__  $$|  $$   /$$/| $$$    /$$$| $$      |_  $$_/| $$$ | $$| $$  /$$/ /$$__  $$
+#| $$  \__/ \  $$ /$$/ | $$$$  /$$$$| $$        | $$  | $$$$| $$| $$ /$$/ | $$  \__/
+#|  $$$$$$   \  $$$$/  | $$ $$/$$ $$| $$        | $$  | $$ $$ $$| $$$$$/  |  $$$$$$ 
+# \____  $$   \  $$/   | $$  $$$| $$| $$        | $$  | $$  $$$$| $$  $$   \____  $$
+# /$$  \ $$    | $$    | $$\  $ | $$| $$        | $$  | $$\  $$$| $$\  $$  /$$  \ $$
+#|  $$$$$$/    | $$    | $$ \/  | $$| $$$$$$$$ /$$$$$$| $$ \  $$| $$ \  $$|  $$$$$$/
+# \______/     |__/    |__/     |__/|________/|______/|__/  \__/|__/  \__/ \______/ 
+
+
+
+  systemd.tmpfiles.rules = [
+  "L+ /home/${global.mainUser}/.local/share/Steam /home/${global.mainUser}/steam" # creates a symlink from normal steam directory to steam subvolume
+  "L+ /home/${global.mainUser}/.steam /home/${global.mainUser}/steam" # creates a symlink from normal steam directory to steam subvolume
+  #"f+ " # site said these were needed? not sure, just keeping them just in case
+  #"C+ " # site said these were needed? not sure, just keeping them just in case
+  ]
+
+
+
+
+
 #  /$$$$$$  /$$$$$$$  /$$$$$$$  /$$       /$$$$$$  /$$$$$$   /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$  /$$   /$$  /$$$$$$ 
 # /$$__  $$| $$__  $$| $$__  $$| $$      |_  $$_/ /$$__  $$ /$$__  $$|__  $$__/|_  $$_/ /$$__  $$| $$$ | $$ /$$__  $$
 #| $$  \ $$| $$  \ $$| $$  \ $$| $$        | $$  | $$  \__/| $$  \ $$   | $$     | $$  | $$  \ $$| $$$$| $$| $$  \__/
@@ -126,14 +148,6 @@
       btrfs subvolume create /home/nyxSeal/steam
     fi
   '';
-
-
-
-  fileSystems."/home/nyxSeal/.local/share/Steam" = {
-    device = "/home/nyxSeal/steam";
-    fsType = "none";
-    options = [ "bind" ];
-  };
 
 
 
