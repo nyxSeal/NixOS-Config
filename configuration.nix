@@ -66,7 +66,7 @@
   "L+ /home/${global.mainUser}/.steam /home/${global.mainUser}/steam" # creates a symlink from normal steam directory to steam subvolume
   #"f+ " # site said these were needed? not sure, just keeping them just in case
   #"C+ " # site said these were needed? not sure, just keeping them just in case
-  ]
+  ];
 
 
 
