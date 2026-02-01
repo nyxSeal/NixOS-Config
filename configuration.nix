@@ -145,12 +145,12 @@
 
 
 
-  #system.activationScripts.createSteamSubvolume.text = ''
-  #  if [ ! -d /home/nyxSeal/steam ]; then
-  #    echo "Creating Btrfs subvolume for Steam..."
-  #    btrfs subvolume create /home/nyxSeal/steam
-  #  fi
-  #'';
+  system.activationScripts.createSteamSubvolume.text = ''
+    if [ ! -d /home/nyxSeal/steam ]; then
+      echo "Creating Btrfs subvolume for Steam..."
+      btrfs subvolume create /home/nyxSeal/steam
+    fi
+  '';
 
 
 
