@@ -91,6 +91,7 @@
   environment.systemPackages = with pkgs; [
     borgbackup # backup system
     btop # tui system monitor
+    btop-rocm # shows gpu info for btop
     fastfetch
     floorp-bin # replacement for librewolf
     kdePackages.ksshaskpass # kde ssh agent 
