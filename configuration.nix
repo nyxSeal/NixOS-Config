@@ -91,14 +91,14 @@
   environment.systemPackages = with pkgs; [
     borgbackup # backup system
     btop # tui system monitor
-    btop-rocm # shows gpu info for btop
     fastfetch
-    floorp-bin # replacement for librewolf
     kdePackages.ksshaskpass # kde ssh agent 
     kdePackages.filelight # file usage visualizer
-    #librewolf  # currently is broken
+    librewolf  # hardened firefox (gecko) based browser
     omnissa-horizon-client # virtual desktop client
     prismlauncher # minecraft launcher
+    rocmPackages.rocm-smi # shows gpu information for AMD GPUs
+    stow # symlink manager for managing dotfiles
     tealdeer # man pages but shorter
     vesktop # discord client with plugins
     wget # idk
