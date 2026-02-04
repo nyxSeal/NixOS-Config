@@ -92,12 +92,13 @@
     borgbackup # backup system
     btop # tui system monitor
     fastfetch
+    floorp # alternative browser for sites that need features blocked by librewolf
     kdePackages.ksshaskpass # kde ssh agent 
     kdePackages.filelight # file usage visualizer
     librewolf  # hardened firefox (gecko) based browser
     omnissa-horizon-client # virtual desktop client
     prismlauncher # minecraft launcher
-    rocmPackages.rocm-smi # shows gpu information for AMD GPUs
+    #rocmPackages.rocm-smi # shows gpu information for AMD GPUs # edit, does not work (still need a solution)
     stow # symlink manager for managing dotfiles
     tealdeer # man pages but shorter
     vesktop # discord client with plugins
