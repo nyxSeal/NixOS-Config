@@ -92,7 +92,7 @@
     borgbackup # backup system
     btop # tui system monitor
     fastfetch
-    floorp-bin # alternative browser for sites that need features blocked by librewolf
+    #floorp-bin # alternative browser for sites that need features blocked by librewolf
     kdePackages.ksshaskpass # kde ssh agent 
     kdePackages.filelight # file usage visualizer
     librewolf  # hardened firefox (gecko) based browser
