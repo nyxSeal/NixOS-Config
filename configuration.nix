@@ -193,7 +193,7 @@
      ];
      
      initrd.systemd.enable = true; # required if using lz4 algorithm for zswap     
-     kernelPackages = pkgs.linuxPackages_hardened; # use latest (hardened) kernel
+     kernelPackages = pkgs.linuxPackages_latest; # use latest kernel
   };
 
 
@@ -400,7 +400,7 @@
 
 
   security = {
-    unprivilegedUsernsClone = true; # Allows apps to be launched with hardened kernel
+    #unprivilegedUsernsClone = true; # Allows apps to be launched with hardened kernel
     apparmor.enable = true;
     #allowUserNamespaces = true; # Needed for sandboxing?
     sudo.execWheelOnly = true;
