@@ -24,16 +24,16 @@
   
   in {
 
-    nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem { # replace nixy for hostName if different
+    nixosConfigurations.hostName = nixpkgs.lib.nixosSystem { # replace nixy for hostName if different
 
       specialArgs = { 
         inherit inputs;
 
         global = {
-          hostName = ${hostName};
-          mainUser = ${mainUser};
-          gitUsername = ${gitUsername};
-          gitEmail = ${gitEmail};
+          hostName = hostName;
+          mainUser = mainUser;
+          gitUsername = gitUsername;
+          gitEmail = gitEmail;
         };
 
       };
@@ -44,7 +44,7 @@
 
     };
 
-    homeConfigurations.${mainUser} = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.mainUser = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
       modules = [

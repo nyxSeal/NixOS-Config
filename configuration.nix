@@ -137,7 +137,8 @@
     };
 
     shellAliases = { # aliases
-      rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; 
+      rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig"; # possibly useless, don't want to remove it just yet though
+      rewrite-home = "sudo home-manager switch --flake ~/.nixconfig"; 
       update = "sudo nix flake update";
       loadConfig = "vim ~/.nixconfig/configuration.nix";
       saveGit = "zsh ~/.nixconfig/gitSave.sh";
