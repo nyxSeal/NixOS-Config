@@ -23,8 +23,17 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
+
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      ${global.mainUser} = import ./home.nix;
+    };
+  };
 
 
 

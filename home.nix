@@ -3,7 +3,7 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "nyxSeal";
+  home.username = "nyxSeal";  # need to integrate these two with the global argument and the global.mainUser variable
   home.homeDirectory = "/home/nyxSeal";
 
   # This value determines the Home Manager release that your configuration is
