@@ -2,6 +2,8 @@
 
 cd ~/.nixconfig
 
+git pull --rebase
+
 git add -v ~/.nixconfig/*
 git add -v ~/.nixconfig/.gitignore
 

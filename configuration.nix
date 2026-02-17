@@ -93,14 +93,15 @@
     btop # tui system monitor
     fastfetch
     #floorp-bin # alternative browser for sites that need features blocked by librewolf
-    gimp
+    gimp # image editor
+    home-manager # declaratively manage home directory
     kdePackages.ksshaskpass # kde ssh agent 
     kdePackages.filelight # file usage visualizer
     librewolf  # hardened firefox (gecko) based browser
+    neovim # better vim text editor
     omnissa-horizon-client # virtual desktop client
     prismlauncher # minecraft launcher
     #rocmPackages.rocm-smi # shows gpu information for AMD GPUs # edit, does not work (still need a solution)
-    stow # symlink manager for managing dotfiles
     tealdeer # man pages but shorter
     vesktop # discord client with plugins
     wget # idk
@@ -120,8 +121,13 @@
 
   programs.zsh = { # shell language
     enable = true;
-    #enableCompletion = true;
-    autosuggestions.enable = true;
+    enableCompletion = true;
+
+    autosuggestions = {
+      enable = true;
+      strategy = [ "history" ];
+    };
+
     syntaxHighlighting.enable = true;
 
     ohMyZsh = {
@@ -289,7 +295,21 @@
 
 
   services = {
-    displayManager.ly.enable = true;
+
+    displayManager.ly = {
+      enable = true;
+
+      settings = {
+        clock = "%c";
+        allow_empty_password = true;
+        clear_password = false;
+        bigclock = true;
+        bigclock_seconds = true;
+        auto_login_user = null;
+      };
+
+    };
+
     desktopManager.plasma6.enable = true;
     printing.enable = true; # Enables CUPS
 
@@ -372,7 +392,7 @@
     config = {
       user.name = "${global.gitUsername}";
       user.email = "${global.gitEmail}";
-      pull.rebase = false;
+      pull.rebase = true;
       #commit.gpgsign = true;
     };
 
