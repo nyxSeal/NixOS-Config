@@ -310,7 +310,6 @@
       enable = true;
 
       settings = {
-        clock = "%c";
         allow_empty_password = true;
         clear_password = false;
         bigclock = true;
