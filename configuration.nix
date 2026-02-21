@@ -310,11 +310,8 @@
       enable = true;
 
       settings = {
-        allow_empty_password = true;
-        clear_password = false;
-        bigclock = true;
-        bigclock_seconds = true;
-        auto_login_user = null;
+        allow_empty_password = false;
+        clear_password = true;
       };
 
     };
