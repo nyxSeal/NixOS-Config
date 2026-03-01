@@ -1,24 +1,25 @@
-{config, lib, config, ...}: { 
+{config, lib, ...}: { 
 
 
 
-  mainUser = "nyxSeal";
-  hostName = "nixy";
-  allowedSshUsers = "scattergun";
+  config.mainUser = "nyxSeal";
+  config.hostName = "nixy";
+  config.allowedSshUser = "scattergun";
   
  
     
 
   imports = [
-    ./../../modules/moduleBundle.nix
+    ./../../modules/modulebundle.nix
   ];
 
 
-  entertainment.enable = lib.mkForce true;
-  gui.enable = lib.mkForce true;
-  gui.option = lib.mkForce "kde";
-  basicservices.enable = lib.mkForce true;
-  home-manager.enable = lib.mkForce true;
+  config.entertainment.enable = lib.mkForce true;
+  config.gui.enable = lib.mkForce true;
+  config.kde.enable = lib.mkForce true;
+  config.niri.enable = lib.mkForce false;
+  config.basicservices.enable = lib.mkForce true;
+  config.home-manager.enable = lib.mkForce true;
 
 
 

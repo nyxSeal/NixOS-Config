@@ -7,13 +7,6 @@
 
   config = lib.mkIf config.entertainment.enable {
 
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
-
-    home-manager = {
-     extraSpecialArgs = { inherit inputs; };
-     users."${config.mainUser}" = import ./entertainment-home.nix
-    };
-
     programs.steam = {
       enable = true;
       #remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play

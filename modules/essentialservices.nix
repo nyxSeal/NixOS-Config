@@ -34,9 +34,9 @@
       theme = "agnoster";
     };
  
-    shellAlias = {
+    shellAliases = {
       rewrite = "sudo nixos-rebuild switch --flake .#nyxSeal";
-      saveGit = "zsh $HOME/.nixconfig/scripts/gitSave.sh"
+      saveGit = "zsh $HOME/.nixconfig/scripts/gitSave.sh";
     };
 
     histSize = 10000;
@@ -45,7 +45,7 @@
   };
 
 
-
+  networking.networkmanager.enable = true;
 
 
   services.openssh = {
@@ -71,7 +71,7 @@
         IdentityFile ~/.ssh/id_ed25519_backup
         IdentitiesOnly yes
       Host github.com
-        Hostname github
+        Hostname github.com
         Port 22
         User git
         IdentityFile ~/.ssh/id_ed25519_github

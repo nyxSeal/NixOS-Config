@@ -6,7 +6,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./defaults.nix
-      inputs.home-manager.nixosModules.home-manager
+      #inputs.home-manager.nixosModules.home-manager
     ];
 
 
@@ -69,7 +69,7 @@
 
 
 
-  services.openssh.settings.AllowUsers = [ "${config.allowedSSHUsers}" ];
+  services.openssh.settings.AllowUsers = [ "${config.allowedSshUser}" ];
 
 
 

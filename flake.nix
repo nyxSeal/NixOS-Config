@@ -25,8 +25,9 @@
 
 
       nixy = nixpkgs.lib.nixosSystem {
-        systems = [ "x86_64-linux" ]; 
+        system =  "x86_64-linux"; 
         modules = [
+          inputs.home-manager.nixosModules.home-manager
           ./hosts/main/configuration.nix
           ./globalvars.nix
         ];
@@ -37,8 +38,9 @@
 
 
       scout = nixpkgs.lib.nixosSystem {
-        systems = [ "x86_64-linux"];
+        system =  "x86_64-linux";
         modules = [
+          inputs.home-manager.nixosModules.home-manager
           ./hosts/backup/configuration.nix
           ./globalvars.nix
         ];
