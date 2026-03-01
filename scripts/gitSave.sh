@@ -8,6 +8,6 @@ read -r commitMessage
 
 git commit -m "$commitMessage"
 
-git pull --rebase
+git pull origin main --rebase
 
 git push --set-upstream origin main
