@@ -15,8 +15,13 @@
 
 
 
-  outputs = { self', nixpkgs, home-manager, flake-parts, ...  } @inputs:
-    flake-parts.lib.mkFlake {inherit inputs; }; {
+  outputs = { self, nixpkgs, home-manager, vars, ...  } @inputs: let
+    homeManagerOption = 
+  "home-manager.nixosModules.home-manager = 
+  
+  ";
+  
+  in  {
 
     nixosConfigurations = {
 
@@ -24,12 +29,14 @@
         systems = [ "x86_64-linux" ]; 
         modules = [
           ./hosts/main/configuration.nix
+          #./globalVars.nix
         ];
       };
       scout = nixpkgs.lib.nixosSystem {
         systems = [ "x86_64-linux"];
         modules = [
           ./hosts/backup/configuration.nix
+          #./globalVars.nix
         ];
       };
 
@@ -40,25 +47,19 @@
       inherit inputs;
     };
 
-    modules = [
-      ./globalVars.nix
-      ./default.nix
-    ];
-      home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          home = {
-            username = "${mainUser.option}";
-            homeDirectory = "/home/${mainUser.option}";
-            stateVersion = "25.11";
-          };
-          programs.home-manager.enable = true;
-          #users."${mainUser}" = import ./../home-manager/home.nix;
+    home-manager.nixosModules.home-manager =
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        home = {
+          username = "${vars.mainUser}";
+          homeDirectory = "/home/${vars.mainUser}";
+          stateVersion = "25.11";
         };
-      }
-    ];
+        programs.home-manager.enable = true;
+      };
+    };
   };
 
 
