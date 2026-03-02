@@ -50,11 +50,12 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 5000 22 ];
+    ports = [ 22 ];
+    AllowUsers = [ "${config.allowedSshUser}" ];
 
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
     };
 
   };
@@ -66,7 +67,7 @@
     extraConfig = "
       Host backup
         Hostname 192.168.1.172
-        Port 5000
+        Port 22
         User scattergun
         IdentityFile ~/.ssh/id_ed25519_backup
         IdentitiesOnly yes
@@ -78,7 +79,7 @@
         IdentitiesOnly yes
       Host main
         Hostname 192.168.1.185
-        Port 5000
+        Port 22
         User nyxSeal
         IdentityFile ~/.ssh/id_ed25519_main
         IdentitiesOnly yes

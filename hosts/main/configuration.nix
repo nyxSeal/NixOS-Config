@@ -69,10 +69,6 @@
 
 
 
-  services.openssh.settings.AllowUsers = [ "${config.allowedSshUser}" ];
-
-
-
   environment.variables = {
     SSH_ASKPASS_REQUIRE = "prefer";
   };

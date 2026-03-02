@@ -17,8 +17,6 @@
       kdePackages.dolphin 
     ];
 
-    networking.networkmanager.enable = true; # enables network configurations interactively using nmcli or nmtui
-
     services.printing.enable = true; # enables CUPS printing
 
     programs.foot.enable = true; # terminal emulator
