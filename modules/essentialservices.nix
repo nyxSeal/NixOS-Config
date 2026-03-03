@@ -35,7 +35,7 @@
     };
  
     shellAliases = {
-      rewrite = "sudo nixos-rebuild switch --flake .#nyxSeal";
+      rewrite = "sudo nixos-rebuild switch --flake ~/.nixconfig/flake.nix#nixy";
       saveGit = "zsh $HOME/.nixconfig/scripts/gitSave.sh";
     };
 
@@ -51,11 +51,11 @@
   services.openssh = {
     enable = true;
     ports = [ 22 ];
-    AllowUsers = [ "${config.allowedSshUser}" ];
 
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
+      AllowUsers = [ "${config.allowedSshUser}" ];
     };
 
   };

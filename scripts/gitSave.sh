@@ -1,6 +1,8 @@
 #! /bin/zsh
 
-git add -v ~/.nixconfig/*
+cd ~/.nixconfig
+
+git add ~/.nixconfig/*
 
 echo -n "Commit message: "
 read -r commitMessage
