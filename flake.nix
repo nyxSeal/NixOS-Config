@@ -28,7 +28,7 @@
         system =  "x86_64-linux"; 
         modules = [
           inputs.home-manager.nixosModules.home-manager
-          ./hosts/main/configuration.nix
+          ./hosts/main/default.nix
           ./globalvars.nix
         ];
         specialArgs = {
@@ -41,8 +41,8 @@
         system =  "x86_64-linux";
         modules = [
           inputs.home-manager.nixosModules.home-manager
-          ./hosts/backup/configuration.nix
-          ./globalvars.nix
+          ./hosts/backup/default.nix
+          #./globalvars.nix
         ];
         specialArgs = {
           inherit inputs;
