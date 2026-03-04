@@ -92,10 +92,6 @@ The issues tab is what I use to keep track of things I want to add to my config.
   - Type: string
  
   
-- ```config.ssh.enable``` (default = true)
-  - Enables ssh and git (git requires ssh) (don't know why you'd want this off but still an option)
- 
-  
 - ```config.man.enable``` (default = true)
   - Enables extra documentation (tealdeer and more man pages)
  

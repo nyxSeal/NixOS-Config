@@ -9,13 +9,14 @@
     ./gui/desktop/niri/niri.nix
     ./essentials/home-manager-setup.nix
     ./essentials/zsh.nix
-    ./essentials/ssh.nix
     ./essentials/system-services.nix
     ./essentials/sound.nix
     ./essentials/partitions.nix
     ./essentials/development.nix
     ./essentials/amd-gpu.nix
     ./essentials/man.nix
+    ./essentials/networking.nix
+    ./essentials/security.nix
     
   ];
 
@@ -34,7 +35,6 @@
   config.amd-gpu.enable = lib.mkDefault false;
 
   config.zsh.enable = lib.mkDefault true;
-  config.ssh.enable = lib.mkDefault true;
   config.man.enable = lib.mkDefault true;
 
 
