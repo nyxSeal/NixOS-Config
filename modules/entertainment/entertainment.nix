@@ -14,10 +14,9 @@
       #localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     };
     
-    environment.systemPackages = with pkgs; [
-
-      prismlauncher
-      vesktop
+    users.users."${config.mainUser}".packages = [
+      pkgs.prismlauncher
+      pkgs.vesktop
     ];
 
   };
