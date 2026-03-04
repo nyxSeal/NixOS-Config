@@ -18,8 +18,14 @@ The issues tab is what I use to keep track of things I want to add to my config.
 
 ## Configuration
 
-- Change or add hosts to flake.nix
-- Change defined options in host/<host>/default.nix
+- In each host directory, there is a default.nix file. That file declares what modules and options are enabled or disabled.
+- To add a host:
+  - Add an entry to the flake.nix file (the option on top is the host name, not the user)
+  - Add a directory in /hosts for that user, and create a default.nix file
+  - Import ../../modules/modulebundle.nix and ./hardware-configuration.nix
+  - Declare the required options and then change any of the other options (detailed below)
+  - When updating, make sure to change what host you are updating (the # at the end)
+    - You can also add an alias in modules/essentials/zsh.nix to update that specific host (have to reboot before aliases are updated)
 
 ### Options
 
@@ -27,112 +33,147 @@ The issues tab is what I use to keep track of things I want to add to my config.
 
 **Required**
 
-- ```config.mainUser``` (default = null)
+- ```mainUser``` (default = null)
   -  The name of the primary user
   - Type: string
  
   
-- ```config.hostName``` (default = null)
+- ```hostName``` (default = null)
   - The name of the host
   - Type: string
  
   
-- ```config.systemd-boot.enable``` (default = false)
+- ```systemd-boot.enable``` (default = false)
   - Enables the systemd-boot bootloader (only for UEFI systems)
 
 
-- ```config.grub-boot.enable``` (default = false)
+- ```grub-boot.enable``` (default = false)
   - Enables the grub bootloader (UEFI and BIOS systems)
   
 
-**The rest**
+**Optional**
 
-- ```services.printing.enable``` (default = false)
-  - Enables CUPS
- 
-  
-- ```time.timeZone``` (default = "America/New_York")
-  - Changes the timezone
-  - Type: string
- 
-  
-- ```config.zsh.enable``` (default = true)
-  - Enables zsh shell language (if false then bash is defaulted, scripts may not work)
- 
-  
-- ```config.entertainment.enable``` (default = false)
-  - Enables games and game-related apps or features (steam, vesktop, discord, prismlauncher)
- 
-  
-- ```config.gui.enable``` (default = false)
-  - Enables the gui to be activated (basically just installs a display manager to launch a de or wm)
- 
-  
-- ```config.kde.enable``` (default = false)
-  - Enables the KDE Plasma desktop environment + plasma-manager for configuration
- 
-  
-- ```config.niri.enable``` (default = false)
-  - Enables the niri window manager + configuration (config not implemented yet)
- 
-  
-- ```config.home-manager.enable``` (default = false)
-  - Enables home manager, only used for plasma manager and dotfiles
- 
-  
-- ```config.allowedSshUser``` (default = null)
+
+Networking:
+
+
+- ```allowedSshUser``` (default = null)
   - The single user allowed to SSH into your system. All others are blocked (only one)
   - Type: string
  
   
-- ```config.gitUsername``` (default = "nyxSeal")
+- ```gitUsername``` (default = "nyxSeal")
   - The GitHub username for version control on git
   - Type: string
  
   
-- ```config.gitEmail``` (default = "litigate_putdown.zigzagged008@slmails.com")
+- ```gitEmail``` (default = "litigate_putdown.zigzagged008@slmails.com")
   - The GitHub email for version control on git
   - Type: string
- 
+
+
+- ```time.timeZone``` (default = "America/New_York")
+  - Changes the timezone
+  - Type: string
+
+
+- ```services.printing.enable``` (default = false)
+  - Enables CUPS
+
+
+
+
+Dependency modules:
+
   
-- ```config.man.enable``` (default = true)
-  - Enables extra documentation (tealdeer and more man pages)
- 
+- ```home-manager.enable``` (default = false)
+  - Enables home manager, only used for plasma manager and dotfiles
+
   
+- ```zsh.enable``` (default = true)
+  - Enables zsh shell language (if false then bash is defaulted, scripts may not work)
+
+
 - ```nixpkgs.config.allowUnfree``` (default = true)
   - Enables 'unfree' software to be installed (includes steam)
+
+
+- ```gui.enable``` (default = false)
+  - Enables a display manaager that allows the launching of desktop environments.
+
+
+
+
+System: 
+
  
+- ```man.enable``` (default = true)
+  - Enables extra documentation (tealdeer and more man pages)
+
   
-- ```config.sound-driver.enable``` (default = false)
+- ```sound-driver.enable``` (default = false)
   - Enables pipewire allowing sound to be played
  
   
-- ```config.swapspace.enable``` (default = false)
+- ```swapspace.enable``` (default = false)
   - Enables swapspace, a service that dynamically creates swap when needed
  
   
-- ```config.zswap.enable``` (default = false)
+- ```zswap.enable``` (default = false)
   - Enables zswap, which compresses ram
+
+
+- ```amd-gpu.enable``` (default = false)
+  - Enables extra options for AMD gpus
+  - Requires: an AMD gpu
+
+
+
+
+Desktop environment/window manager:
+
+  
+- ```kde.enable``` (default = false)
+  - Enables the KDE Plasma desktop environment + plasma-manager for configuration
+  - Requires: ```home-manager.enable``` ```gui.enable```
  
   
-- ```config.development.enable``` (default = false)
+- ```niri.enable``` (default = false)
+  - Enables the niri window manager + configuration (config not implemented yet)
+  - Requires: ```gui.enable```
+
+
+
+Browser:
+
+
+- ```librewolf.enable``` (default = false)
+  - Enables the Librewolf browser
+  - Requires: A desktop environment or window manager
+ 
+  
+- ```floorp.enable``` (default = false)
+  - Enables the Floorp browser
+  - Requires: A desktop environment or window manager
+
+
+
+
+Suites of tools or apps:
+
+  
+- ```development.enable``` (default = false)
   - Enables a code development suite (wip, currently just a c++ compiler)
  
 
-- ```config.guiapps.enable``` (default = false)
+- ```guiapps.enable``` (default = false)
   - Enables a suite of gui applications
+  - Requires: A desktop environment or window manager
  
   
-- ```config.librewolf.enable``` (default = false)
-  - Enables the Librewolf browser
- 
-  
-- ```config.floorp.enable``` (default = false)
-  - Enables the Floorp browser
-
-
-- ```config.amd-gpu.enable``` (default = false)
-  - Enables extra options for AMD gpus
+- ```entertainment.enable``` (default = false)
+  - Enables games and game-related apps or features (steam, vesktop, discord, prismlauncher)
+  - Requires: ```home-manager.enable```, ```nixpkgs.config.AllowUnfree```, A desktop environment or window manager
 
 
 ## Updating
