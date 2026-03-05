@@ -11,12 +11,13 @@
     ./essentials/zsh.nix
     ./essentials/system-services.nix
     ./essentials/sound.nix
-    ./essentials/partitions.nix
     ./essentials/development.nix
     ./essentials/amd-gpu.nix
     ./essentials/man.nix
     ./essentials/networking.nix
     ./essentials/security.nix
+    ./partitions/bootloader.nix
+    ./partitions/swap.nix
     
   ];
 
@@ -31,7 +32,6 @@
   config.sound-driver.enable = lib.mkDefault false;
   config.swapspace.enable = lib.mkDefault false;
   config.zswap.enable = lib.mkDefault false;
-  config.systemd-boot.enable = lib.mkDefault false;
   config.amd-gpu.enable = lib.mkDefault false;
 
   config.zsh.enable = lib.mkDefault true;

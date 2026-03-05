@@ -25,8 +25,9 @@
     sound-driver.enable = lib.mkForce true;
     swapspace.enable = lib.mkForce true;
     zswap.enable = lib.mkForce true;
-    systemd-boot.enable = lib.mkForce true;
+    bootloader.enum = lib.mkForce "systemd-boot";
     amd-gpu.enable = lib.mkForce true;
+    bootPartition = "nvme0n1p1";
 
     # other
     services.printing.enable = lib.mkForce true;

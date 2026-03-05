@@ -14,6 +14,8 @@
   ];
 
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
 
   system.autoUpgrade = {
     enable = true;

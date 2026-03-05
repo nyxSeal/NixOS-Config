@@ -15,7 +15,8 @@
  
 
     # system
-    grub-boot.enable = lib.mkForce true;
+    bootloader.enum = lib.mkForce "grub";
+    bootPartition = lib.mkForce "sda1";
 
 
     # user declaration

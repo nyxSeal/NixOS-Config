@@ -43,12 +43,12 @@ The issues tab is what I use to keep track of things I want to add to my config.
   - Type: string
  
   
-- ```systemd-boot.enable``` (default = false)
-  - Enables the systemd-boot bootloader (only for UEFI systems)
+- ```bootloader.enum``` (default = null)
+  - Enables a bootloader of your choice
+  - Type: string
+  - Options: "grub", "systemd-boot"
 
 
-- ```grub-boot.enable``` (default = false)
-  - Enables the grub bootloader (UEFI and BIOS systems)
   
 
 **Optional**
