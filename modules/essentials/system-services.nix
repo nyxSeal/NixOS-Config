@@ -1,9 +1,10 @@
-{pkgs, config, lib, ...}: {
-
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   nixpkgs.config.allowUnfree = lib.mkDefault true;
-
-
 
   users.users."${config.mainUser}".packages = [
     pkgs.wget # downloading tool often a default in linux
@@ -13,9 +14,7 @@
     pkgs.borgbackup # backup system
   ];
 
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
 
   system.autoUpgrade = {
     enable = true;
@@ -30,12 +29,8 @@
 
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = ["nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
   };
 
-
-
   system.stateVersion = "25.11"; # DO NOT CHANGE THIS VALUE UNLESS YOU ABSOLUTELY KNOW WHAT YOU ARE DOING
-
-
 }

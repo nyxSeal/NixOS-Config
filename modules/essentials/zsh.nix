@@ -1,11 +1,14 @@
-{pkgs, config, lib, ... }: {
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   options = {
-  zsh.enable = lib.mkEnableOption "enable zsh";
+    zsh.enable = lib.mkEnableOption "enable zsh";
   };
 
   config = lib.mkIf config.zsh.enable {
-
     system.userActivationScripts.zshrc = "touch .zshrc";
 
     programs.zsh = {
@@ -14,14 +17,14 @@
 
       autosuggestions = {
         enable = true;
-        strategy = [ "history" ];
+        strategy = ["history"];
       };
 
       syntaxHighlighting.enable = true;
 
       ohMyZsh = {
         enable = true;
-        plugins = [ "git" ];
+        plugins = ["git"];
         theme = "agnoster";
       };
 
@@ -33,9 +36,5 @@
       histSize = 10000;
       histFile = "~/.zsh_history";
     };
-
   };
-
-
-
 }

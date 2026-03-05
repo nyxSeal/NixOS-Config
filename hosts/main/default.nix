@@ -1,18 +1,20 @@
-{config, lib, pkgs, ...}: { 
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./../../modules/modulebundle.nix
     ./hardware-configuration.nix
   ];
 
-
   config = {
-
     # user info
     mainUser = "nyxSeal";
     hostName = "nixy";
     allowedSshUser = "scattergun";
- 
+
     # gui-related
     entertainment.enable = lib.mkForce true;
     gui.enable = lib.mkForce true;
@@ -33,21 +35,14 @@
     services.printing.enable = lib.mkForce true;
     development.enable = lib.mkForce true;
 
-
     # user declaration
     users.users."${config.mainUser}" = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "git" "networkmanager" ];
+      extraGroups = ["wheel" "git" "networkmanager"];
 
       packages = [
         pkgs.tree
       ];
-
     };
-
-
   };
-
-
-
 }

@@ -1,6 +1,9 @@
-{pkgs, lib, config, ... }: {
-
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   networking.hostName = "${config.hostName}";
 
   networking.networkmanager.enable = true;
@@ -9,18 +12,15 @@
 
   services.printing.enable = lib.mkDefault false;
 
-
-
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [22];
 
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
-      AllowUsers = [ "${config.allowedSshUser}" ];
+      AllowUsers = ["${config.allowedSshUser}"];
     };
-
   };
 
   programs.ssh = {
@@ -47,7 +47,6 @@
         IdentityFile ~/.ssh/id_ed25519_main
         IdentitiesOnly yes
      ";
-     
   };
 
   programs.git = {
@@ -58,8 +57,6 @@
       user.email = "${config.gitEmail}";
       #commit.gpgsign = true;
     };
-
-
   };
 
   # Open ports in the firewall.
@@ -71,6 +68,4 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localHost,internal.domain";
-
-
 }

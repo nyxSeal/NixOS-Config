@@ -1,9 +1,12 @@
-{pkgs, config, lib, ... }: {
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   security = {
     apparmor.enable = true;
     sudo.execWheelOnly = true;
     protectKernelImage = true;
   };
-
 }

@@ -1,5 +1,9 @@
-{pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
     guiapps.enable = lib.mkEnableOption "enables a suite of gui applications";
   };
@@ -15,6 +19,4 @@
       pkgs.vorta # gui for borgbackup
     ];
   };
-
-
 }

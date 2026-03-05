@@ -1,8 +1,10 @@
-{pkgs, config, lib, ... }: {
-
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   options = {
-
     mainUser = lib.mkOption {
       type = lib.types.str;
       description = "the primary user of the current host";
@@ -34,8 +36,5 @@
       type = lib.types.str;
       description = "the device for the boot partition (after /dev)";
     };
-
   };
-  
-
 }

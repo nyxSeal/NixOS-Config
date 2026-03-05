@@ -1,5 +1,9 @@
-{ pkgs, lib, config, ...}: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./entertainment/entertainment.nix
     ./gui/applications/applications.nix
@@ -18,7 +22,6 @@
     ./essentials/security.nix
     ./partitions/bootloader.nix
     ./partitions/swap.nix
-    
   ];
 
   config.entertainment.enable = lib.mkDefault false;
@@ -36,5 +39,4 @@
 
   config.zsh.enable = lib.mkDefault true;
   config.man.enable = lib.mkDefault true;
-
 }

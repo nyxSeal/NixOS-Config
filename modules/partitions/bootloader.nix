@@ -1,11 +1,13 @@
-{pkgs, config, lib, ...}: {
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   options.bootloader.enum = lib.mkOption {
-    type = lib.types.enum [ "grub" "systemd-boot" ];
+    type = lib.types.enum ["grub" "systemd-boot"];
     description = "the bootloader used";
   };
-
-
 
   config = lib.mkMerge [
     {
@@ -14,8 +16,6 @@
         timeout = 10;
       };
     }
-
-
 
     (
       lib.mkIf (config.bootloader.enum == "grub") {
@@ -26,16 +26,10 @@
       }
     )
 
-
-
     (
       lib.mkIf (config.bootloader.enum == "systemd-boot") {
         boot.loader.systemd-boot.enable = true;
       }
     )
-
-
-
   ];
-
 }
