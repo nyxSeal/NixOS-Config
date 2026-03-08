@@ -29,11 +29,12 @@ The issues tab is what I use to keep track of things I want to add to my config.
 
 BRIGHTNESS CONTROL
 
-- EXTERNAL MONITORS
-
   - KDE
     - KDE has a brightness service called PowerDevil, so none of these are needed.
     - If it stops working, try running systemctl --user restart plasma-powershell
+
+
+- EXTERNAL MONITORS
 
   - ddcutil
     - set ```brightness.ddcutil.enable``` to ```true```
